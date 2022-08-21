@@ -14,8 +14,11 @@ router.post('/extract', async (req, res) => {
     const { text, apikey } = req.body;
     try {
         const results = await extractKeywords(text, apikey);
-        console.log(results.data)
-        res.send(results.data).end();
+        console.log(results.data);
+
+        // Now extract the "choices" array and send it correctly back to the user.
+        const keywords = results.data.choices[0].text
+        res.send(keywords).end();
     }
     catch(error){
         res.status(400).send(`Could not complete operation. Error dump:\n${error}`).end();
