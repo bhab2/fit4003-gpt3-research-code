@@ -14,6 +14,7 @@ router.post('/extract', async (req, res) => {
     const { text, apikey } = req.body;
     try {
         const results = await extractKeywords(text, apikey);
+        console.log(results.data)
         res.send(results.data).end();
     }
     catch(error){
@@ -42,6 +43,6 @@ async function extractKeywords(text, apikey) {
 
 app.use(router);
 
-app.listen(3000,() => {
-console.log("Started on PORT 3000");
+app.listen(80,() => {
+console.log("Started on PORT 80");
 })
