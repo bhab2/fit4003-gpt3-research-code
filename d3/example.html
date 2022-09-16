@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<!-- This file was found at https://bl.ocks.org/d3noob/8375092 -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>GPT-3 Application Taxonomy</title>
+
+    <style>
+	
+	.node {
+		cursor: pointer;
+	}
+
+	.node circle {
+	  fill: #fff;
+	  stroke: steelblue;
+	  stroke-width: 3px;
+	}
+
+	.node text {
+	  font: 12px sans-serif;
+	}
+
+	.link {
+	  fill: none;
+	  stroke: #ccc;
+	  stroke-width: 2px;
+	}
+
+	div.tooltip {
+		position: absolute;
+		text-align: center;
+		width: auto;
+		height: auto;
+		padding: 5px;
+		font: 10px sans-serif;
+		background: lightsteelblue;
+		border: 2px;
+		border-radius: 2px;
+		pointer-events: none;
+	}
+	
+    </style>
+
+  </head>
+
+  <body>
+
+<!-- load the d3.js library -->	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+	
+<script>
+
+var treeData = [
+  {
+    "name": "GPT-3 Applications",
+    "parent": "null",
+	"descriptions": "",
+    "children": [
+      {
+        "name": "Developer Prodcutivity",
+        "parent": "GPT-3 Applications",
+		"descriptions": "This is when we do code stuff with the developers using natural language",
+        "children": [
+          {
+            "name": "Developer Coding Tools",
+            "parent": "Developer Prodcutivity",
+			"descriptions": "",
+			"children": [
+			{
+				"name": "Technical Documentation",
+				"parent": "Developer Coding Tools",
+				"descriptions": ""
+			},
+			{
+				"name": "Auto-Complete Code",
+				"parent": "Developer Coding Tools",
+				"descriptions": ""
+			},
+			{
+				"name": "Code and Text conversions",
+				"parent": "Developer Coding Tools",
+				"descriptions": "",
+				"children": [
+				{
+					"name": "Text-to-code",
+					"parent": "Code and Text conversions",
+					"descriptions": "",
+					"children": [
+					{
+						"name": "Business Logic",
+						"parent": "Text-to-code",
+						"descriptions": "",
+						"children":[
+						{
+							"name": "Web Scrapers",
+							"parent": "Business Logic",
+							"descriptions": ""
+						}
+						,
+						{
+							"name": "Other generated code",
+							"parent": "Business Logic",
+							"descriptions": ""
+						}
+						,
+						{
+							"name": "Database Queries",
+							"parent": "Business Logic",
+							"descriptions": ""
+						}
+						,
+						{
+							"name": "Web3 Related code generation",
+							"parent": "Business Logic",
+							"descriptions": ""
+						}
+						]
+					},
+					{
+						"name": "Fronted and UI",
+						"parent": "Text-to-code",
+						"descriptions": ""
+					}
+					]
+				},
+				{
+					"name": "Code-to-text",
+					"parent": "Code and Text conversions",
+					"descriptions": "",
+					"children":[
+					{
+						"name": "Explain code in Human Language",
+						"parent": "Code-to-text",
+						"descriptions": ""
+					}
+					]
+				}
+				]
+			},
+			{
+				"name": "Error Detection",
+				"parent": "Developer Coding Tools",
+				"descriptions": "",
+				"children":[
+				{
+					"name": "Testing suites",
+					"parent": "Error Detection",
+					"descriptions": ""
+				},
+				{
+					"name": "Debugging tools",
+					"parent": "Error Detection",
+					"descriptions": ""
+				}
+				]
+			}	
+			]
+          },
+          {
+            "name": "Project Management",
+            "parent": "Developer Prodcutivity",
+			"descriptions": "",
+			"children":[
+			{
+				"name": "Product Backlog generators",
+				"parent": "Project Management",
+				"descriptions": ""
+			},
+			{
+				"name": "Report Generators",
+				"parent": "Product Management",
+				"descriptions": ""
+			}
+			]
+          }
+        ]
+      },
+      {
+        "name": "Images",
+        "parent": "GPT-3 Applications",
+		"descriptions": "",
+		"children":[
+		{
+			"name": "Generation",
+			"parent": "Images",
+			"descriptions": "",
+			"children": [
+			{
+				"name": "CGI Backdrop",
+				"parent": "Generation",
+				"descriptions": ""
+			}
+			,
+			{
+				"name": "Artwork",
+				"parent": "Generation",
+				"descriptions": "",
+				"children": [
+				{
+					"name": "Topic in topic style",
+					"parent": "Artwork",
+					"descriptions": "",
+					"children": [
+					{
+						"name": "Expected Correlation topics",
+						"parent": "Topic in stopic style",
+						"descriptions": ""
+					}
+					,
+					{
+						"name": "Unusual Correlation topics",
+						"parent": "Topic in stopic style",
+						"descriptions": ""
+					}
+					]
+				},
+				{
+					"name": "Freestyle artwork",
+					"parent": "Artwork",
+					"descriptions": ""
+				},
+				{
+					"name": "Face generation",
+					"parent": "Artwork",
+					"descriptions": ""
+				}
+				]
+			}
+			]
+		},
+		{
+			"name": "Toolsets",
+			"parent": "Images",
+			"descriptions": "",
+			"children": [
+			{
+				"name": "Drawing aids",
+				"parent": "Toolsets",
+				"descriptions": "",
+				"chidlren": [
+				{
+					"name": "Color Design and palette generation",
+					"parent": "Drawing aids",
+					"descriptions": ""
+				}
+				]
+			},
+			{
+				"name": "Natural Language explain artwork",
+				"parent": "Toolsets",
+				"descriptions": ""
+			}
+			]
+		}
+		]
+      }
+	  ,
+	  {
+		"name": "Multimedia",
+		"parent": "GPT-3 Applications",
+		"descriptions": "",
+		"children":[
+		{
+			"name": "Graphical Design",
+			"parent": "Multimedia",
+			"descriptions": "",
+			"children": [
+			{
+				"name": "Logos",
+				"parent": "Graphical Design",
+				"descriptions": ""
+			},
+			{
+				"name": "Presentations",
+				"parent": "Graphical Design",
+				"descriptions": ""
+			},
+			{
+				"name": "Game characters (graphics + personality)",
+				"parent": "Graphical Design",
+				"descriptions": ""
+			}
+			]
+		},
+		{
+			"name": "Music",
+			"parent": "Multimedia",
+			"descriptions": "",
+			"children": [
+			{
+				"name": "Lyrics completion and generation",
+				"parent": "Music",
+				"descriptions": ""
+			},
+			{
+				"name": "Tabs and sheet music",
+				"parent": "Music",
+				"descriptions": ""
+			},
+			{
+				"name": "Musical piece generators",
+				"parent": "Music",
+				"descriptions": ""
+			},
+			{
+				"name": "Plyalist Generators",
+				"parent": "Music",
+				"descriptions": ""
+			}
+			]
+		},
+		{
+			"name": "Video",
+			"parent": "Multimedia",
+			"descriptions": "",
+			"children":[
+			{
+				"name": "Annotations and subtitles",
+				"parent": "Video",
+				"descriptions": ""
+			},
+			{
+				"name": "Video generators",
+				"parent": "Video",
+				"descriptions": ""
+			},
+			{
+				"name": "CGI Backdrop scenery",
+				"parent": "Video",
+				"descriptions": ""
+			}
+			]
+		}
+		]
+	  }
+	  ,
+	  {
+		"name": "Text Conversion",
+		"parent": "GPT-3 Applications",
+		"descriptions": "",
+		"children": [
+		{
+			"name": "Text Compression",
+			"parent": "Text Conversion",
+			"descriptions": "",
+			"children": [
+			{
+				"name": "Keyword Extraction",
+				"parent": "Text Conversion",
+				"descriptions": "",
+				"children":[
+				{
+					"name": "Product Descriptions",
+					"parent": "Keyword Extraction",
+					"descriptions": ""
+				},
+				{
+					"name": "Websites",
+					"parent": "Keyword Extraction",
+					"descriptions": ""
+				},
+				{
+					"name": "Business Documents",
+					"parent": "Keyword Esxtraction",
+					"descriptions": "",
+					"children": [
+					{
+						"name": "Invoices",
+						"parent": "Business Documents",
+						"descriptions": ""
+					},
+					{
+						"name": "Reports",
+						"parent": "Business Documents",
+						"descriptions": ""
+					}
+					]
+				}
+				]
+			},
+			{
+				"name": "Summarising",
+				"parent": "Text Compression",
+				"descriptions": "",
+				"children": [
+				{
+					"name": "Academic Work",
+					"parent": "Summarising",
+					"descriptions": ""
+				},
+				{
+					"name": "Films",
+					"parent": "Summarising",
+					"descriptions": ""
+				},
+				{
+					"name": "Conversations",
+					"parent": "Summarising",
+					"descriptions": ""
+				},
+				{
+					"name": "Customer Reviews",
+					"parent": "Summarising",
+					"descriptions": ""
+				},
+				{
+					"name": "Generic Text",
+					"parent": "Summarising",
+					"descriptions": ""
+				},
+				{
+					"name": "Legal Documents",
+					"parent": "Summarising",
+					"descriptions": ""
+				},
+				{
+					"name": "Text to Symbols",
+					"parent" : "Summarising",
+					"descriptions": ""
+				}
+				]
+			}
+			]
+		},
+		{
+			"name": "Text Expansion",
+			"parent": "Text Conversion",
+			"descriptions": "",
+			"children": [
+			{
+				"name": "Creative Writing",
+				"parent": "Text Expansion",
+				"descriptions": "",
+				"children": [
+				{
+					"name": "Ideation maps",
+					"parent": "Creative Writing",
+					"descriptions": ""
+				},
+				{
+					"name": "Stories and novels",
+					"parent": "Creative Writing",
+					"descriptions": ""
+				},
+				{
+					"name": "Poems and lyrics",
+					"parent": "Creative Writing",
+					"descriptions": ""
+				},
+				{
+					"name": "Letters",
+					"parent": "Creative Writing",
+					"descriptions": ""
+				},
+				{
+					"name": "Other Books",
+					"parent": "Creative Writing",
+					"descriptions": ""
+				},
+				{
+					"name": "Recipes",
+					"parent": "Creative Writing",
+					"descriptions": ""
+				}
+				]
+			},
+			{
+				"name": "Professional Writing",
+				"parent": "Text Expansion",
+				"descriptions": "",
+				"children": [
+				{
+					"name": "Copywriting",
+					"parent": "Professional Writing",
+					"descriptions": "",
+					"children": [
+					{
+						"name": "Job ads and descriptions",
+						"parent": "Copywriting",
+						"descriptions": ""
+					},
+					{
+						"name": "Social Media posts",
+						"parent": "Copywriting",
+						"descriptions": ""
+					},
+					{
+						"name": "Emails",
+						"parent": "Copywriting",
+						"descriptions": ""
+					},
+					{
+						"name": "Product Advertisements",
+						"parent": "Copywriting",
+						"descriptions": ""
+					},
+					{
+						"name": "Articles",
+						"parent": "Copywriting",
+						"descriptions": ""
+					},
+					{
+						"name": "Blogs",
+						"parent": "Copywriting",
+						"descriptions": ""
+					},
+					{
+						"name": "Product Descriptions",
+						"parent": "Copywriting",
+						"descriptions": ""
+					},
+					]
+				},
+				{
+					"name": "Legal Documents generation",
+					"parent": "Professional Writing",
+					"descriptions": ""
+				},
+				{
+					"name": "Business Documents",
+					"parent": "Professional Writing",
+					"descriptions": "",
+					"children": [
+					{
+						"name": "Resumes",
+						"parent": "Business Documents",
+						"descriptions": ""
+					},
+					{
+						"name": "Press Releases",
+						"parent": "Business Documents",
+						"descriptions": ""
+					},
+					{
+						"name": "Business Media",
+						"parent": "Business Documents",
+						"descriptions": ""
+					}
+					]
+				},
+				{
+					"name": "Questionnaires",
+					"parent": "Professional Writing",
+					"descriptions": ""
+				},
+				{
+					"name": "Academic",
+					"parent": "Professional Writing",
+					"descriptions": "",
+					"children": [
+					{
+						"name": "Scientific papers generators",
+						"parent": "Academic",
+						"descriptions": ""
+					},
+					{
+						"name": "Essays",
+						"parent": "Academic",
+						"descriptions": ""
+					}
+					]
+				}
+				]
+			}
+			]
+		},
+		{
+			"name": "Text Translation",
+			"parent": "Text Conversion",
+			"descriptions": "",
+			"children": [
+			{
+				"name": "Direct Translation",
+				"parent": "Text Translation",
+				"descriptions": ""
+			},
+			{
+				"name": "Colloquial sayings",
+				"parent": "Text Translation",
+				"descriptions": ""
+			},
+			{
+				"name": "Comprehension",
+				"parent": "Text Translation",
+				"descriptions": "",
+				"children": [
+				{
+					"name": "Bias Detection",
+					"parent": "Comprehension",
+					"descriptions": ""
+				},
+				{
+					"name": "Sentiment analysis",
+					"parent": "Comprehension",
+					"descriptions": ""
+				},
+				{
+					"name": "Proofreading",
+					"parent": "Comprehension",
+					"descriptions": ""
+				}
+				]
+			}
+			]
+		}
+		]
+	  }
+	  ,
+	  {
+		"name": "Conversational",
+		"parent": "GPT-3 Applications",
+		"descriptions": "",
+		"children": [
+		{
+			"name": "Business Assistants",
+			"parent": "Conversational",
+			"descriptions": "",
+			"children": [
+			{
+				"name": "Executive decisionmakers",
+				"parent": "Business Assistants",
+				"descriptions": ""
+			},
+			{
+				"name": "PA",
+				"parent": "Business Assistants",
+				"descriptions": ""
+			}
+			]
+		},
+		{
+			"name": "Chatbots",
+			"parent": "Conversational",
+			"descriptions": "",
+
+			"children": [
+			{
+				"name": "Personal Companions",
+				"parent": "Chatbots",
+				"descriptions": "",
+				"children": [
+				{
+					"name": "Friendly",
+					"parent": "Personal Companions",
+					"descriptions": ""
+				},
+				{
+					"name": "Courtship",
+					"parent": "Personal Companions",
+					"descriptions": ""
+				},
+				{
+					"name": "Teacher",
+					"parent": "Personal Companions",
+					"descriptions": ""
+				}
+				]
+			},
+			{
+				"name": "Customer Support",
+				"parent": "Chatbots",
+				"descriptions": ""
+			},
+			{
+				"name": "Personal Shopper",
+				"parent": "Chatbots",
+				"descriptions": ""
+			},
+			{
+				"name": "Health Support",
+				"parent": "Chatbots",
+				"descriptions": ""
+			},
+			{
+				"name": "Social Network Simulations",
+				"parent": "Chatbots",
+				"descriptions": ""
+			},
+			{
+				"name": "General Knowledge",
+				"parent": "Chatbots",
+				"descriptions": ""
+			}
+			]
+		}
+		]
+	  }
+    ]
+  }
+];
+
+
+// ************** Generate the tree diagram	 *****************
+var margin = {top: 20, right: 200, bottom: 20, left: 200},
+	width = 3000 - margin.right - margin.left,
+	height = 1500 - margin.top - margin.bottom;
+	
+var i = 0,
+	duration = 750,
+	root;
+
+var tree = d3.layout.tree()
+	.size([height, width]);
+
+var diagonal = d3.svg.diagonal()
+	.projection(function(d) { return [d.y, d.x]; });
+
+var svg = d3.select("body").append("svg")
+	.attr("width", width + margin.right + margin.left)
+	.attr("height", height + margin.top + margin.bottom)
+  .append("g")
+	.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+root = treeData[0];
+root.x0 = height / 2;
+root.y0 = 0;
+  
+update(root);
+
+d3.select(self.frameElement).style("height", "1500px");
+
+  // Also define a div for the Tooltip
+var div = d3.select("body").append("div")
+		.attr("class", "tooltip")
+		.style("opacity", 0);
+
+function update(source) {
+
+  // Compute the new tree layout.
+  var nodes = tree.nodes(root).reverse(),
+	  links = tree.links(nodes);
+
+  // Normalize for fixed-depth.
+  nodes.forEach(function(d) { d.y = d.depth * 250; });
+
+  // Update the nodes…
+  var node = svg.selectAll("g.node")
+	  .data(nodes, function(d) { return d.id || (d.id = ++i); });
+
+
+  // Create hovering animation for each node that a hover is detected on
+
+  // Enter any new nodes at the parent's previous position.
+  var nodeEnter = node.enter().append("g")
+	  .attr("class", "node")
+	  .attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
+	  .on("click", click)
+	  .on("mouseover", hoverTextBox)
+	  .on("mouseout", mouseOutTextBoxHide);
+
+  nodeEnter.append("circle")
+	  .attr("r", 1e-6)
+	  .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+
+  nodeEnter.append("text")
+	  .attr("x", function(d) { return d.children || d._children ? -13 : 13; })
+	  .attr("dy", ".35em")
+	  .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
+	  .text(function(d) { return d.name; })
+	  .style("fill-opacity", 1e-6);
+
+  // Transition nodes to their new position.
+  var nodeUpdate = node.transition()
+	  .duration(duration)
+	  .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
+
+  nodeUpdate.select("circle")
+	  .attr("r", 10)
+	  .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+
+  nodeUpdate.select("text")
+	  .style("fill-opacity", 1);
+
+  // Transition exiting nodes to the parent's new position.
+  var nodeExit = node.exit().transition()
+	  .duration(duration)
+	  .attr("transform", function(d) { return "translate(" + source.y + "," + source.x + ")"; })
+	  .remove();
+
+  nodeExit.select("circle")
+	  .attr("r", 1e-6);
+
+  nodeExit.select("text")
+	  .style("fill-opacity", 1e-6);
+
+  // Update the links…
+  var link = svg.selectAll("path.link")
+	  .data(links, function(d) { return d.target.id; });
+
+  // Enter any new links at the parent's previous position.
+  link.enter().insert("path", "g")
+	  .attr("class", "link")
+	  .attr("d", function(d) {
+		var o = {x: source.x0, y: source.y0};
+		return diagonal({source: o, target: o});
+	  });
+
+  // Transition links to their new position.
+  link.transition()
+	  .duration(duration)
+	  .attr("d", diagonal);
+
+  // Transition exiting nodes to the parent's new position.
+  link.exit().transition()
+	  .duration(duration)
+	  .attr("d", function(d) {
+		var o = {x: source.x, y: source.y};
+		return diagonal({source: o, target: o});
+	  })
+	  .remove();
+
+  // Stash the old positions for transition.
+  nodes.forEach(function(d) {
+	d.x0 = d.x;
+	d.y0 = d.y;
+  });
+}
+
+// Toggle children on click.
+function click(d) {
+  if (d.children) {
+	d._children = d.children;
+	d.children = null;
+  } else {
+	d.children = d._children;
+	d._children = null;
+  }
+  update(d);
+}
+
+// Bring up "Description" in json, if any, on cursor hover
+function hoverTextBox(d, i) {
+	console.log(`You have hovered onto node: ${d.name}`)
+	console.log(`This node's descriptions are: ${d.descriptions}`)
+
+	div.transition()
+	.duration(1)
+	.style("opacity", 0.9);
+	div.html("<br/>" + d.descriptions)
+	.style("left", d3.event.pageX+"px")
+	.style("top", (d3.event.pageY - 28)+"px")
+
+	div.html(d.descriptions)
+	
+}
+
+// Hide text box after unhovered
+function mouseOutTextBoxHide(d, i) {
+	console.log(`You have hovered off form node: ${d.name}`)
+
+	div.transition()
+	.duration(1)
+	.style("opacity", 0);
+
+}
+
+</script>
+	
+  </body>
+</html>
