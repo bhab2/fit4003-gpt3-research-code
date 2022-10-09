@@ -152,7 +152,7 @@ var treeData = [
 						]
 					},
 					{
-						"name": "Fronted and UI",
+						"name": "Frontend and UI",
 						"parent": "Text-to-code",
 						"descriptions": ""
 					}
@@ -272,7 +272,7 @@ var treeData = [
 				"name": "Drawing aids",
 				"parent": "Toolsets",
 				"descriptions": "",
-				"chidlren": [
+				"children": [
 				{
 					"name": "Color Design and palette generation",
 					"parent": "Drawing aids",
@@ -302,6 +302,11 @@ var treeData = [
 			"children": [
 			{
 				"name": "Logos",
+				"parent": "Graphical Design",
+				"descriptions": ""
+			},
+			{
+				"name": "Charts",
 				"parent": "Graphical Design",
 				"descriptions": ""
 			},
@@ -467,141 +472,151 @@ var treeData = [
 			"parent": "Text Conversion",
 			"descriptions": "",
 			"children": [
-			{
-				"name": "Creative Writing",
-				"parent": "Text Expansion",
-				"descriptions": "",
-				"children": [
 				{
-					"name": "Ideation maps",
-					"parent": "Creative Writing",
-					"descriptions": ""
+					"name": "Generic Writing",
+					"parent": "Text Expansion",
+					"descriptions": "",
 				},
 				{
-					"name": "Stories and novels",
-					"parent": "Creative Writing",
-					"descriptions": ""
-				},
-				{
-					"name": "Poems and lyrics",
-					"parent": "Creative Writing",
-					"descriptions": ""
-				},
-				{
-					"name": "Letters",
-					"parent": "Creative Writing",
-					"descriptions": ""
-				},
-				{
-					"name": "Other Books",
-					"parent": "Creative Writing",
-					"descriptions": ""
-				},
-				{
-					"name": "Recipes",
-					"parent": "Creative Writing",
-					"descriptions": ""
-				}
-				]
-			},
-			{
-				"name": "Professional Writing",
-				"parent": "Text Expansion",
-				"descriptions": "",
-				"children": [
-				{
-					"name": "Copywriting",
-					"parent": "Professional Writing",
+					"name": "Creative Writing",
+					"parent": "Text Expansion",
 					"descriptions": "",
 					"children": [
 					{
-						"name": "Job ads and descriptions",
-						"parent": "Copywriting",
+						"name": "Ideation maps",
+						"parent": "Creative Writing",
 						"descriptions": ""
 					},
 					{
-						"name": "Social Media posts",
-						"parent": "Copywriting",
+						"name": "Stories and novels",
+						"parent": "Creative Writing",
 						"descriptions": ""
 					},
 					{
-						"name": "Emails",
-						"parent": "Copywriting",
+						"name": "Poems and lyrics",
+						"parent": "Creative Writing",
 						"descriptions": ""
 					},
 					{
-						"name": "Product Advertisements",
-						"parent": "Copywriting",
+						"name": "Letters",
+						"parent": "Creative Writing",
 						"descriptions": ""
 					},
 					{
-						"name": "Articles",
-						"parent": "Copywriting",
+						"name": "Other Books",
+						"parent": "Creative Writing",
 						"descriptions": ""
 					},
 					{
-						"name": "Blogs",
-						"parent": "Copywriting",
-						"descriptions": ""
-					},
-					{
-						"name": "Product Descriptions",
-						"parent": "Copywriting",
-						"descriptions": ""
-					},
-					]
-				},
-				{
-					"name": "Legal Documents generation",
-					"parent": "Professional Writing",
-					"descriptions": ""
-				},
-				{
-					"name": "Business Documents",
-					"parent": "Professional Writing",
-					"descriptions": "",
-					"children": [
-					{
-						"name": "Resumes",
-						"parent": "Business Documents",
-						"descriptions": ""
-					},
-					{
-						"name": "Press Releases",
-						"parent": "Business Documents",
-						"descriptions": ""
-					},
-					{
-						"name": "Business Media",
-						"parent": "Business Documents",
+						"name": "Recipes",
+						"parent": "Creative Writing",
 						"descriptions": ""
 					}
 					]
 				},
 				{
-					"name": "Questionnaires",
-					"parent": "Professional Writing",
-					"descriptions": ""
-				},
-				{
-					"name": "Academic",
-					"parent": "Professional Writing",
+					"name": "Professional Writing",
+					"parent": "Text Expansion",
 					"descriptions": "",
 					"children": [
 					{
-						"name": "Scientific papers generators",
-						"parent": "Academic",
+						"name": "Copywriting",
+						"parent": "Professional Writing",
+						"descriptions": "",
+						"children": [
+							{
+								"name": "SEO Content",
+								"parent": "Copywriting",
+								"descriptions": ""
+							},
+							{
+								"name": "Job ads and descriptions",
+								"parent": "Copywriting",
+								"descriptions": ""
+							},
+							{
+								"name": "Social Media posts",
+								"parent": "Copywriting",
+								"descriptions": ""
+							},
+							{
+								"name": "Emails",
+								"parent": "Copywriting",
+								"descriptions": ""
+							},
+							{
+								"name": "Product Advertisements",
+								"parent": "Copywriting",
+								"descriptions": ""
+							},
+							{
+								"name": "Articles",
+								"parent": "Copywriting",
+								"descriptions": ""
+							},
+							{
+								"name": "Blogs",
+								"parent": "Copywriting",
+								"descriptions": ""
+							},
+							{
+								"name": "Product Descriptions",
+								"parent": "Copywriting",
+								"descriptions": ""
+							},
+						]
+					},
+					{
+						"name": "Legal Documents generation",
+						"parent": "Professional Writing",
 						"descriptions": ""
 					},
 					{
-						"name": "Essays",
-						"parent": "Academic",
+						"name": "Business Documents",
+						"parent": "Professional Writing",
+						"descriptions": "",
+						"children": [
+						{
+							"name": "Resumes",
+							"parent": "Business Documents",
+							"descriptions": ""
+						},
+						{
+							"name": "Press Releases",
+							"parent": "Business Documents",
+							"descriptions": ""
+						},
+						{
+							"name": "Business Media",
+							"parent": "Business Documents",
+							"descriptions": ""
+						}
+						]
+					},
+					{
+						"name": "Questionnaires",
+						"parent": "Professional Writing",
 						"descriptions": ""
+					},
+					{
+						"name": "Academic",
+						"parent": "Professional Writing",
+						"descriptions": "",
+						"children": [
+						{
+							"name": "Scientific papers generators",
+							"parent": "Academic",
+							"descriptions": ""
+						},
+						{
+							"name": "Essays",
+							"parent": "Academic",
+							"descriptions": ""
+						}
+						]
 					}
 					]
 				}
-				]
-			}
 			]
 		},
 		{
@@ -636,6 +651,16 @@ var treeData = [
 				},
 				{
 					"name": "Proofreading",
+					"parent": "Comprehension",
+					"descriptions": ""
+				},
+				{
+					"name": "Understanding subtext",
+					"parent": "Comprehension",
+					"descriptions": ""
+				},
+				{
+					"name": "Resemblance",
 					"parent": "Comprehension",
 					"descriptions": ""
 				}
