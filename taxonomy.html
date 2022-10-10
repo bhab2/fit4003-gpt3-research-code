@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<!-- This file was found at https://bl.ocks.org/d3noob/8375092 -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>GPT-3 Application Taxonomy</title>
+
+    <style>
+	
+	.node {
+		cursor: pointer;
+	}
+
+	.node circle {
+	  fill: #fff;
+	  stroke: steelblue;
+	  stroke-width: 3px;
+	}
+
+	.node text {
+	  font: 12px sans-serif;
+	}
+
+	.link {
+	  fill: none;
+	  stroke: #ccc;
+	  stroke-width: 2px;
+	}
+
+	div.tooltip {
+		position: absolute;
+		text-align: center;
+		width: auto;
+		height: auto;
+		padding: 5px;
+		font: 10px sans-serif;
+		background: lightsteelblue;
+		border: 2px;
+		border-radius: 2px;
+		pointer-events: none;
+	}
+	
+    </style>
+	    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  </head>
+
+  <body>
+
+<!-- load the d3.js library -->	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<a class="navbar-brand" href="#">FIT4003 Research Project</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	  <span class="navbar-toggler-icon"></span>
+	</button>
+  
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+	  <ul class="navbar-nav mr-auto">
+		<li class="nav-item active">
+		  <a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a>
+		</li>
+		<li class="nav-item">
+		  <a class="nav-link" href="taxonomy.html">Taxonomy</a>
+		</li>
+		
+		
+	  </ul>
+	  <form class="form-inline my-2 my-lg-0">
+		<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+	  </form>
+	</div>
+	
+</nav>
+
+  
+<div style="margin: 10px"> <p>We have attempted to classify GPT-3 applications into five primary categories namely Developer Productivity, Image Generation, Media Content Creation, Text Conversion, and Conversational </p></div>
+	
+<script>
+
+var treeData = [
+  {
+    "name": "GPT-3 Applications",
+    "parent": "null",
+	"descriptions": "",
+    "children": [
+      {
+        "name": "Developer Prodcutivity",
+        "parent": "GPT-3 Applications",
+		"descriptions": "<b> Developer Productivity </b> category covers the technical tasks accomplished by GPT-3 applications which may not be used by the general public or users.",
+        "children": [
+          {
+            "name": "Developer Coding Tools",
+            "parent": "Developer Prodcutivity",
+			"descriptions": "",
+			"children": [
+			{
+				"name": "Technical Documentation",
+				"parent": "Developer Coding Tools",
+				"descriptions": "<b> Technical Documentation</b>: Applications that generate technical documentation for code.<br><b> Example </b>:AI to Write"
+			},
+			{
+				"name": "Auto-Complete Code",
+				"parent": "Developer Coding Tools",
+				"descriptions": "<b> Auto-Complete Code</b>: Applications that generate code depending on existing code or prompts.<br><b> Example </b>:"
+			},
+			{
+				"name": "Code and Text conversions",
+				"parent": "Developer Coding Tools",
+				"descriptions": "",
+				"children": [
+				{
+					"name": "Text-to-code",
+					"parent": "Code and Text conversions",
+					"descriptions": "",
+					"children": [
+					{
+						"name": "Business Logic",
+						"parent": "Text-to-code",
+						"descriptions": "",
+						"children":[
+						{
+							"name": "Web Scrapers",
+							"parent": "Business Logic",
+							"descriptions": "<b> Web Scrapers</b>: Applications that convert natural language into code to perform tasks, web scraping, or document extraction.<br><b> Example</b>: Cheatlayer"
+						}
+						,
+						{
+							"name": "Other generated code",
+							"parent": "Business Logic",
+							"descriptions": "<b> Other generated code</b>: Applications that generate code depending on given prompts.<br><b> Example </b>:ExcelFormulaBot"
+						}
+						,
+						{
+							"name": "Database Queries",
+							"parent": "Business Logic",
+							"descriptions": "<b> Database Queries</b>: Applications that generate database queries based on natural language input..<br><b> Example </b>: SQL queries generator"
+						}
+						,
+						{
+							"name": "Web3 Related code generation",
+							"parent": "Business Logic",
+							"descriptions": "<b> Web3 Related code generation</b>: Applications that design smart contracts and websites in Web3.<br><b> Example </b>:Enzyme"
+						}
+						]
+					},
+					{
+						"name": "Frontend and UI",
+						"parent": "Text-to-code",
+						"descriptions": "<b> Frontend and UI</b>: Applications that design the frontend or UI using natural language input.<br><b> Example </b>:Figma UI creator"
+					}
+					]
+				},
+				{
+					"name": "Code-to-text",
+					"parent": "Code and Text conversions",
+					"descriptions": "",
+					"children":[
+					{
+						"name": "Explain code in Human Language",
+						"parent": "Code-to-text",
+						"descriptions": "<b> Explain code in Human Language</b>: Applications that convert given code into a text description of what the code does.<br><b> Example </b>:Private Project by Simon"
+					}
+					]
+				}
+				]
+			},
+			{
+				"name": "Error Detection",
+				"parent": "Developer Coding Tools",
+				"descriptions": "",
+				"children":[
+				{
+					"name": "Testing suites",
+					"parent": "Error Detection",
+					"descriptions": "<b> Testing suites</b>: Applications that provide a testing suite or environment.<br><b> Example </b>:A/B Testing"
+				},
+				{
+					"name": "Debugging tools",
+					"parent": "Error Detection",
+					"descriptions": "<b> Debugging tools</b>: Applications that detects errors an can debug given code input.<br><b> Example </b>:Epsilon Code"
+				}
+				]
+			}	
+			]
+          },
+          {
+            "name": "Project Management",
+            "parent": "Developer Prodcutivity",
+			"descriptions": "",
+			"children":[
+			{
+				"name": "Product Backlog generators",
+				"parent": "Project Management",
+				"descriptions": "<b> Product Backlog generators</b>: Applications that generate product backlogs and To-Do lists.<br><b> Example </b>:JiraPT-3"
+			},
+			{
+				"name": "Report Generators",
+				"parent": "Product Management",
+				"descriptions": "<b> Report Generators</b>: Applications that generate reports for companies.<br><b> Example </b>:"
+			}
+			]
+          }
+        ]
+      },
+      {
+        "name": "Images",
+        "parent": "GPT-3 Applications",
+		"descriptions": "<b>Images</b> category includes applications which can generate any type of imagery based on natural language inputs or accomplish any other tasks centered around imagery.",
+		"children":[
+		{
+			"name": "Generation",
+			"parent": "Images",
+			"descriptions": "",
+			"children": [
+			{
+				"name": "CGI Backdrop",
+				"parent": "Generation",
+				"descriptions": "<b> CGI Backdrop</b>: Applications that generate CGI backdrops.<br><b> Example </b>:"
+			}
+			,
+			{
+				"name": "Artwork",
+				"parent": "Generation",
+				"descriptions": "",
+				"children": [
+				{
+					"name": "Topic in topic style",
+					"parent": "Artwork",
+					"descriptions": "",
+					"children": [
+					{
+						"name": "Expected Correlation topics",
+						"parent": "Topic in stopic style",
+						"descriptions": "<b> Expected Correlation topics</b>: Need to Change.<br><b> Example </b>:"
+					}
+					,
+					{
+						"name": "Unusual Correlation topics",
+						"parent": "Topic in stopic style",
+						"descriptions": "<b> Unusual Correlation topics</b>: Need to Change.<br><b> Example </b>:"
+					}
+					]
+				},
+				{
+					"name": "Freestyle artwork",
+					"parent": "Artwork",
+					"descriptions": "<b> Freestyle artwork</b>: Applications that generate freestyle artwork.<br><b> Example </b>:Botto"
+				},
+				{
+					"name": "Face generation",
+					"parent": "Artwork",
+					"descriptions": "<b> Face generation</b>: Applications that generate faces.<br><b> Example </b>:AI face generator"
+				}
+				]
+			}
+			]
+		},
+		{
+			"name": "Toolsets",
+			"parent": "Images",
+			"descriptions": "",
+			"children": [
+			{
+				"name": "Drawing aids",
+				"parent": "Toolsets",
+				"descriptions": "",
+				"children": [
+				{
+					"name": "Color Design and palette generation",
+					"parent": "Drawing aids",
+					"descriptions": "<b> Color Design and palette generation</b>: Applications that generate palettes and color designs.<br><b> Example </b>:Color Pallete Generator"
+				}
+				]
+			},
+			{
+				"name": "Natural Language explain artwork",
+				"parent": "Toolsets",
+				"descriptions": "<b> Natural Language explain artwork</b>: Need to Change.<br><b> Example </b>:"
+			}
+			]
+		}
+		]
+      }
+	  ,
+	  {
+		"name": "Multimedia",
+		"parent": "GPT-3 Applications",
+		"descriptions": "<b>Multimedia</b> covers applications that deal with natural language and various other forms of media, such as graphic design, videos, music, and others. ",
+		"children":[
+		{
+			"name": "Graphical Design",
+			"parent": "Multimedia",
+			"descriptions": "",
+			"children": [
+			{
+				"name": "Logos",
+				"parent": "Graphical Design",
+				"descriptions": "<b> Logos</b>: Applications that design and generate logos.<br><b> Example </b>:"
+			},
+			{
+				"name": "Charts",
+				"parent": "Charts",
+				"descriptions": "<b> Charts</b>: Applications that design and generate charts.<br><b> Example </b>:Plotly Chart Generator"
+			},
+			{
+				"name": "Presentations",
+				"parent": "Graphical Design",
+				"descriptions": "<b> Presentations</b>: Applications that design and generate presentations.<br><b> Example </b>:Presentation generator"
+			},
+			{
+				"name": "Game characters (graphics + personality)",
+				"parent": "Graphical Design",
+				"descriptions": "<b> Game characters (graphics + personality)</b>: Applications that design and generate game characters.<br><b> Example </b>:Fable Studio"
+			}
+			]
+		},
+		{
+			"name": "Music",
+			"parent": "Multimedia",
+			"descriptions": "",
+			"children": [
+			{
+				"name": "Lyrics completion and generation",
+				"parent": "Music",
+				"descriptions": "<b> Lyrics completion and generation</b>: Applications that generates or completes lyrics based on the genre and title of the song.<br><b> Example </b>:Jarvis"
+			},
+			{
+				"name": "Tabs and sheet music",
+				"parent": "Music",
+				"descriptions": "<b> Tabs and sheet music</b>: Applications that generates Tabs and sheet music from various prompts.<br><b> Example </b>:Guitar Tab Generator"
+			},
+			{
+				"name": "Musical piece generators",
+				"parent": "Music",
+				"descriptions": "<b> Musical piece generators</b>: Applications that generate musical pieces.<br><b> Example </b>:"
+			},
+			{
+				"name": "Playlist Generators",
+				"parent": "Music",
+				"descriptions": "<b> Playlist Generators</b>: Applications that generates playlists using prompts.<br><b> Example </b>:Podacity AI"
+			}
+			]
+		},
+		{
+			"name": "Video",
+			"parent": "Multimedia",
+			"descriptions": "",
+			"children":[
+			{
+				"name": "Annotations and subtitles",
+				"parent": "Video",
+				"descriptions": "<b> Annotations and subtitles</b>: Applications that generate annotations and/or subtitles of videos.<br><b> Example </b>:"
+			},
+			{
+				"name": "Video Idea generators",
+				"parent": "Video",
+				"descriptions": "<b> Video idea generators</b>: Applications that generate video ideas.<br><b> Example </b>:Idea Generator"
+			},
+			{
+				"name": "CGI Backdrop scenery",
+				"parent": "Video",
+				"descriptions": "<b> CGI Backdrop scenery</b>: Applications that generate CGI backdrops for videos.<br><b> Example </b>:"
+			}
+			]
+		}
+		]
+	  }
+	  ,
+	  {
+		"name": "Text Conversion",
+		"parent": "GPT-3 Applications",
+		"descriptions": "<b>Text Conversion</b> is quite a broad category which has sub-categories such as Text Compression, Text Expansion, and Text Translation. These mainly include tasks which involve working with pure text inputs and outputs",
+		"children": [
+		{
+			"name": "Text Compression",
+			"parent": "Text Conversion",
+			"descriptions": "",
+			"children": [
+			{
+				"name": "Keyword Extraction",
+				"parent": "Text Conversion",
+				"descriptions": "",
+				"children":[
+				{
+					"name": "Product Descriptions",
+					"parent": "Keyword Extraction",
+					"descriptions": "<b>Description:</b> Applications that extract keywords from product descriptions. <br><b>Example:</b>"
+				},
+				{
+					"name": "Websites",
+					"parent": "Keyword Extraction",
+					"descriptions": "<b>Description:</b> Applications that extract keywords from websites. <br><b>Example:</b> Keeper Tax"
+				},
+				{
+					"name": "Business Documents",
+					"parent": "Keyword Esxtraction",
+					"descriptions": "",
+					"children": [
+					{
+						"name": "Invoices",
+						"parent": "Business Documents",
+						"descriptions": "<b>Description:</b> Applications that extract keywords from invoices. <br><b>Example:</b> AirPaper"
+					},
+					{
+						"name": "Reports",
+						"parent": "Business Documents",
+						"descriptions": "<b>Description:</b> Applications that extract keywords from reports. <br><b>Example:</b> AirPaper"
+					}
+					]
+				}
+				]
+			},
+			{
+				"name": "Summarising",
+				"parent": "Text Compression",
+				"descriptions": "",
+				"children": [
+				{
+					"name": "Academic Work",
+					"parent": "Summarising",
+					"descriptions": "<b>Description:</b> Applications that are used to summarise academic work like research papers. <br><b>Example:</b> Elicit"
+				},
+				{
+					"name": "Films",
+					"parent": "Summarising",
+					"descriptions": ""
+				},
+				{
+					"name": "Conversations",
+					"parent": "Summarising",
+					"descriptions": "<b>Description:</b> Applications that are used to summarise chats/conversations. <br><b>Example:</b> Grok"
+				},
+				{
+					"name": "Customer Reviews",
+					"parent": "Summarising",
+					"descriptions": "<b>Description:</b> Applications that are used to summarise customer reviews or product feedbacks. <br><b>Example:</b> Chatdesk Trends"
+				},
+				{
+					"name": "Generic Text",
+					"parent": "Summarising",
+					"descriptions": "<b>Description:</b> Applications that are used to summarise any generic text. <br><b>Example:</b> Viable, Genei"
+				},
+				{
+					"name": "Legal Documents",
+					"parent": "Summarising",
+					"descriptions": "<b>Description:</b> Applications that are used to summarise the content in legal documents. <br><b>Example:</b> AILawDocs"
+				},
+				{
+					"name": "Text to Symbols",
+					"parent" : "Summarising",
+					"descriptions": ""
+				},
+				{
+					"name": "Logs",
+					"parent" : "Summarising",
+					"descriptions": "<b>Description:</b> Applications that summarise huge logs. <br><b>Example:</b> Zebrium"
+				}
+				]
+			}
+			]
+		},
+		{
+			"name": "Text Expansion",
+			"parent": "Text Conversion",
+			"descriptions": "",
+			"children": [
+				{
+					"name": "Generic Writing",
+					"parent": "Text Expansion",
+					"descriptions": "<b>Description:</b> Applications that usually provides suggestions/expansions to any generic text. Usually not useful for industry specific content. <br><b>Example:</b> HyperWrite",
+				},
+				{
+					"name": "Creative Writing",
+					"parent": "Text Expansion",
+					"descriptions": "",
+					"children": [
+					{
+						"name": "Ideation maps",
+						"parent": "Creative Writing",
+						"descriptions": "<b>Description:</b> Applications that creates mind maps or brain storming diagrams. <br><b>Example:</b> Ayoa"
+					},
+					{
+						"name": "Stories and novels",
+						"parent": "Creative Writing",
+						"descriptions": "<b>Description:</b> Applications that generate stories or novels based on a description/topic. <br><b>Example:</b> Story Teller"
+					},
+					{
+						"name": "Poems and lyrics",
+						"parent": "Creative Writing",
+						"descriptions": "<b>Description:</b> Applications that generate song lyrics or poems. <br><b>Example:</b> Lila"
+					},
+					{
+						"name": "Letters",
+						"parent": "Creative Writing",
+						"descriptions": "<b>Description:</b> Applications that generate letters of love or other topics. <br><b>Example:</b> Love Letter Generator"
+					},
+					{
+						"name": "Other Books",
+						"parent": "Creative Writing",
+						"descriptions": "<b>Description:</b> Applications that generate long writing pieces or books. <br><b>Example:</b> Article Writing"
+					},
+					{
+						"name": "Recipes",
+						"parent": "Creative Writing",
+						"descriptions": "<b>Description:</b> Applications that generate recipes based on ingredients or other parameters. <br><b>Example:</b> GPT-3 recipe builder"
+					}
+					]
+				},
+				{
+					"name": "Professional Writing",
+					"parent": "Text Expansion",
+					"descriptions": "",
+					"children": [
+					{
+						"name": "Copywriting",
+						"parent": "Professional Writing",
+						"descriptions": "",
+						"children": [
+							{
+								"name": "SEO Content",
+								"parent": "Copywriting",
+								"descriptions": "<b>Description:</b> Applications that produce content for better search engine optimization. <br><b>Example:</b> Jenni"
+							},
+							{
+								"name": "Job ads and descriptions",
+								"parent": "Copywriting",
+								"descriptions": "<b>Description:</b> Applications that produce job descriptions and advertisements. <br><b>Example:</b> Drafted"
+							},
+							{
+								"name": "Social Media posts",
+								"parent": "Copywriting",
+								"descriptions": "<b>Description:</b> Applications that produce content for social media posts. <br><b>Example:</b> Scalenut"
+							},
+							{
+								"name": "Emails",
+								"parent": "Copywriting",
+								"descriptions": "<b>Description:</b> Applications that produce customised emails and content. <br><b>Example:</b> Kalendar AI"
+							},
+							{
+								"name": "Product Advertisements",
+								"parent": "Copywriting",
+								"descriptions": "<b>Description:</b> Applications that produce advertisements based on product or other descriptions. <br><b>Example:</b> Adflow"
+							},
+							{
+								"name": "Articles",
+								"parent": "Copywriting",
+								"descriptions": "<b>Description:</b> Applications that produce articles for a specific topic/descriptions. <br><b>Example:</b> Dashword"
+							},
+							{
+								"name": "Blogs",
+								"parent": "Copywriting",
+								"descriptions": "<b>Description:</b> Applications that produce content for blogs. <br><b>Example:</b> Scalenut"
+							},
+							{
+								"name": "Product Descriptions",
+								"parent": "Copywriting",
+								"descriptions": "<b>Description:</b> Applications that produce descriptions for a product. <br><b>Example:</b> Writesonic"
+							},
+						]
+					},
+					{
+						"name": "Legal Documents generation",
+						"parent": "Professional Writing",
+						"descriptions": "<b>Description:</b> Applications that legal documents from simple language. <br><b>Example:</b> AI Attorney"
+					},
+					{
+						"name": "Business Documents",
+						"parent": "Professional Writing",
+						"descriptions": "",
+						"children": [
+						{
+							"name": "Resumes",
+							"parent": "Business Documents",
+							"descriptions": "<b>Description:</b> Applications that generate content for resumes. <br><b>Example:</b> Rezi"
+						},
+						{
+							"name": "Press Releases",
+							"parent": "Business Documents",
+							"descriptions": "<b>Description:</b> Applications that generate content for press releases. <br><b>Example:</b> GPT-3 News"
+						},
+						{
+							"name": "Business Media",
+							"parent": "Business Documents",
+							"descriptions": ""
+						}
+						]
+					},
+					{
+						"name": "Questionnaires",
+						"parent": "Professional Writing",
+						"descriptions": "<b>Description:</b> Applications that generate surveys/questionaire. <br><b>Example:</b> BlockSurvey"
+					},
+					{
+						"name": "Academic",
+						"parent": "Professional Writing",
+						"descriptions": "",
+						"children": [
+						{
+							"name": "Scientific papers generators",
+							"parent": "Academic",
+							"descriptions": ""
+						},
+						{
+							"name": "Essays",
+							"parent": "Academic",
+							"descriptions": "<b>Description:</b> Applications that generate essays. <br><b>Example:</b> Analytical Essays"
+						}
+						]
+					}
+					]
+				}
+			]
+		},
+		{
+			"name": "Text Translation",
+			"parent": "Text Conversion",
+			"descriptions": "",
+			"children": [
+			{
+				"name": "Direct Translation",
+				"parent": "Text Translation",
+				"descriptions": "<b>Description:</b> Applications that are used to translate directly from one language to another <br><b>Example:</b> Nainai"
+			},
+			{
+				"name": "Colloquial sayings",
+				"parent": "Text Translation",
+				"descriptions": "<b>Description:</b> Applications that are used to translate colloqial language to simple language. <br><b>Example:</b> N/A"
+			},
+			{
+				"name": "Comprehension",
+				"parent": "Text Translation",
+				"descriptions": "",
+				"children": [
+				{
+					"name": "Bias Detection",
+					"parent": "Comprehension",
+					"descriptions": ""
+				},
+				{
+					"name": "Sentiment analysis",
+					"parent": "Comprehension",
+					"descriptions": "<b>Description:</b> Applications that analyse feedbacks/reviews to understand user sentiments. <br><b>Example:</b> Chatdesk Trends"
+				},
+				{
+					"name": "Proofreading",
+					"parent": "Comprehension",
+					"descriptions": ""
+				},
+				{
+					"name": "Understanding subtext",
+					"parent": "Comprehension",
+					"descriptions": "<b>Description:</b> Applications that translate technical terms into simple language. <br><b>Example:</b> Jargon to English"
+				},
+				{
+					"name": "Resemblance",
+					"parent": "Comprehension",
+					"descriptions": "<b>Description:</b> Applications that translates a text to resemble other personalities or styles. <br><b>Example:</b> Resemble AI"
+				}
+				]
+			}
+			]
+		}
+		]
+	  }
+	  ,
+	  {
+		"name": "Conversational",
+		"parent": "GPT-3 Applications",
+		"descriptions": "<b>Conversational</b> category groups all applications which have capabilities to communicate or talk with another human like a human. They can be further divided into general conversations (e.g. Personal Companions) or specific conversations about certain topics (e.g. Health Support) or conversations to get tasks done (Business Assistants).",
+		"children": [
+		{
+			"name": "Business Assistants",
+			"parent": "Conversational",
+			"descriptions": "",
+			"children": [
+			{
+				"name": "Executive decisionmakers",
+				"parent": "Business Assistants",
+				"descriptions": "<b>Description:</b> Applications that can make quality data-driven decisions. <br><b>Example:</b> Oogway"
+			},
+			{
+				"name": "PA",
+				"parent": "Business Assistants",
+				"descriptions": "<b>Description:</b> Applications that mimics the personality of a human and can provide assistance in business activities. <br><b>Example:</b> AskBrian"
+			}
+			]
+		},
+		{
+			"name": "Chatbots",
+			"parent": "Conversational",
+			"descriptions": "",
+
+			"children": [
+			{
+				"name": "Personal Companions",
+				"parent": "Chatbots",
+				"descriptions": "",
+				"children": [
+				{
+					"name": "Friendly",
+					"parent": "Personal Companions",
+					"descriptions": "<b>Description:</b> Applications that mimics the personality of a human and can act as a friend. <br><b>Example:</b> Rezi"
+				},
+				{
+					"name": "Courtship",
+					"parent": "Personal Companions",
+					"descriptions": "<b>Description:</b> Applications that mimics the personality of a human and can act as a romantic partner. <br><b>Example:</b> Not Available"
+				},
+				{
+					"name": "Teacher",
+					"parent": "Personal Companions",
+					"descriptions": "<b>Description:</b> Applications that mimics the personality of a human and can act as a teacher. <br><b>Example:</b> HireStack"
+				}
+				]
+			},
+			{
+				"name": "Customer Support",
+				"parent": "Chatbots",
+				"descriptions": "<b>Description:</b> Chatbots that can respond to customer on chats and provide support. <br><b>Example:</b> ActiveChat"
+			},
+			{
+				"name": "Personal Shopper",
+				"parent": "Chatbots",
+				"descriptions": "<b>Description:</b> Chatbots that can enable users to shop over a chat. <br><b>Example:</b> Friday"
+			},
+			{
+				"name": "Health Support",
+				"parent": "Chatbots",
+				"descriptions": "<b>Description:</b> Chatbots that provide users with health advice. <br><b>Example:</b> Koko"
+			},
+			{
+				"name": "Social Network Simulations",
+				"parent": "Chatbots",
+				"descriptions": "<b>Description:</b> Chatbots/Social networks that can mimic human behavior. <br><b>Example:</b> AI Channels"
+			},
+			{
+				"name": "General Knowledge",
+				"parent": "Chatbots",
+				"descriptions": "<b>Description:</b> Chatbots that can answer generic questions. <br><b>Example:</b> AlterAI"
+			}
+			]
+		}
+		]
+	  }
+    ]
+  }
+];
+
+
+// ************** Generate the tree diagram	 *****************
+var margin = {top: 20, right: 200, bottom: 20, left: 200},
+	width = 3000 - margin.right - margin.left,
+	height = 1500 - margin.top - margin.bottom;
+	
+var i = 0,
+	duration = 750,
+	root;
+
+var tree = d3.layout.tree()
+	.size([height, width]);
+
+var diagonal = d3.svg.diagonal()
+	.projection(function(d) { return [d.y, d.x]; });
+
+var svg = d3.select("body").append("svg")
+	.attr("width", width + margin.right + margin.left)
+	.attr("height", height + margin.top + margin.bottom)
+  .append("g")
+	.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+//For the Title
+svg.append("text")
+	.attr("x", 20)
+	.attr("y", 10 )
+	.attr("text-anchor", "middle")
+	.style("font-size", "30px")
+	.style("text-decoration", "underline")
+	.text("Taxonomy of GPT-3 Applications");
+
+
+
+root = treeData[0];
+root.x0 = height / 2;
+root.y0 = 0;
+  
+update(root);
+
+d3.select(self.frameElement).style("height", "1500px");
+
+  // Also define a div for the Tooltip
+var div = d3.select("body").append("div")
+		.attr("class", "tooltip")
+		.style("opacity", 0);
+
+function update(source) {
+
+  // Compute the new tree layout.
+  var nodes = tree.nodes(root).reverse(),
+	  links = tree.links(nodes);
+
+  // Normalize for fixed-depth.
+  nodes.forEach(function(d) { d.y = d.depth * 250; });
+
+  // Update the nodes…
+  var node = svg.selectAll("g.node")
+	  .data(nodes, function(d) { return d.id || (d.id = ++i); });
+
+
+  // Create hovering animation for each node that a hover is detected on
+
+  // Enter any new nodes at the parent's previous position.
+  var nodeEnter = node.enter().append("g")
+	  .attr("class", "node")
+	  .attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
+	  .on("click", click)
+	  .on("mouseover", hoverTextBox)
+	  .on("mouseout", mouseOutTextBoxHide);
+
+  nodeEnter.append("circle")
+	  .attr("r", 1e-6)
+	  .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+
+  nodeEnter.append("text")
+	  .attr("x", function(d) { return d.children || d._children ? -13 : 13; })
+	  .attr("dy", ".35em")
+	  .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
+	  .text(function(d) { return d.name; })
+	  .style("fill-opacity", 1e-6);
+
+  // Transition nodes to their new position.
+  var nodeUpdate = node.transition()
+	  .duration(duration)
+	  .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
+
+  nodeUpdate.select("circle")
+	  .attr("r", 10)
+	  .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+
+  nodeUpdate.select("text")
+	  .style("fill-opacity", 1);
+
+  // Transition exiting nodes to the parent's new position.
+  var nodeExit = node.exit().transition()
+	  .duration(duration)
+	  .attr("transform", function(d) { return "translate(" + source.y + "," + source.x + ")"; })
+	  .remove();
+
+  nodeExit.select("circle")
+	  .attr("r", 1e-6);
+
+  nodeExit.select("text")
+	  .style("fill-opacity", 1e-6);
+
+  // Update the links…
+  var link = svg.selectAll("path.link")
+	  .data(links, function(d) { return d.target.id; });
+
+  // Enter any new links at the parent's previous position.
+  link.enter().insert("path", "g")
+	  .attr("class", "link")
+	  .attr("d", function(d) {
+		var o = {x: source.x0, y: source.y0};
+		return diagonal({source: o, target: o});
+	  });
+
+  // Transition links to their new position.
+  link.transition()
+	  .duration(duration)
+	  .attr("d", diagonal);
+
+  // Transition exiting nodes to the parent's new position.
+  link.exit().transition()
+	  .duration(duration)
+	  .attr("d", function(d) {
+		var o = {x: source.x, y: source.y};
+		return diagonal({source: o, target: o});
+	  })
+	  .remove();
+
+  // Stash the old positions for transition.
+  nodes.forEach(function(d) {
+	d.x0 = d.x;
+	d.y0 = d.y;
+  });
+}
+
+// Toggle children on click.
+function click(d) {
+  if (d.children) {
+	d._children = d.children;
+	d.children = null;
+  } else {
+	d.children = d._children;
+	d._children = null;
+  }
+  update(d);
+}
+
+// Bring up "Description" in json, if any, on cursor hover
+function hoverTextBox(d, i) {
+	console.log(`You have hovered onto node: ${d.name}`)
+	console.log(`This node's descriptions are: ${d.descriptions}`)
+
+	div.transition()
+	.duration(200)
+	.style("opacity", 0.9);
+	div.html("<br/>" + d.descriptions)
+	.style("left", d3.event.pageX+"px")
+	.style("top", (d3.event.pageY - 28)+"px")
+
+	div.html(d.descriptions)
+	
+}
+
+// Hide text box after unhovered
+function mouseOutTextBoxHide(d, i) {
+	console.log(`You have hovered off form node: ${d.name}`)
+
+	div.transition()
+	.duration(500)
+	.style("opacity", 0);
+
+}
+
+</script>
+
+  </body>
+</html>
